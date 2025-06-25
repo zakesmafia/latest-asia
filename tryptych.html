@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triptych Poster | Ancient Asian Warriors Project</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Noto Serif JP", serif;
+        background: linear-gradient(135deg, #e6ceb2 0%, #d4b896 100%);
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      nav {
+        background: linear-gradient(90deg, #8b0000, #a50000);
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 25px;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 10px 0;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover {
+        transform: translateY(-2px);
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      /* Triptych Layout */
+      .triptych-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 60px 0;
+        perspective: 1000px;
+        min-height: 500px;
+      }
+
+      .triptych-panel {
+        position: relative;
+        width: 300px;
+        height: 450px;
+        margin: 0 -20px;
+        border: 3px solid #8b0000;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(45deg, #f0e8d8, #e6ceb2);
+      }
+
+      .triptych-panel:nth-child(1) {
+        z-index: 3;
+        transform: rotateY(15deg);
+      }
+
+      .triptych-panel:nth-child(2) {
+        z-index: 5;
+        transform: scale(1.1);
+        border-color: #a50000;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .triptych-panel:nth-child(3) {
+        z-index: 3;
+        transform: rotateY(-15deg);
+      }
+
+      .triptych-panel:hover {
+        transform: scale(1.15) translateY(-10px);
+        z-index: 10;
+        box-shadow: 0 20px 50px rgba(139, 0, 0, 0.4);
+      }
+
+      .triptych-panel:nth-child(2):hover {
+        transform: scale(1.2) translateY(-15px);
+      }
+
+      .panel-image {
+        width: 100%;
+        height: 70%;
+        object-fit: cover;
+        transition: all 0.4s ease;
+        filter: sepia(20%) contrast(1.1);
+      }
+
+      .triptych-panel:hover .panel-image {
+        filter: sepia(0%) contrast(1.2) brightness(1.1);
+        transform: scale(1.05);
+      }
+
+      .panel-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(139, 0, 0, 0.9));
+        color: white;
+        padding: 20px;
+        transform: translateY(60px);
+        transition: all 0.4s ease;
+      }
+
+      .triptych-panel:hover .panel-content {
+        transform: translateY(0);
+      }
+
+      .panel-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      }
+
+      .panel-description {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        line-height: 1.4;
+      }
+
+      /* Design Rationale Section */
+      .design-rationale {
+        background: linear-gradient(135deg, #f0e8d8, #faf5ef);
+        border-radius: 20px;
+        padding: 50px;
+        margin: 60px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .design-rationale::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #8b0000, #a50000, #8b0000);
+      }
+
+      .design-rationale h2 {
+        color: #8b0000;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        font-weight: 700;
+      }
+
+      .design-rationale h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: #8b0000;
+        border-radius: 2px;
+      }
+
+      .design-rationale p {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        text-align: justify;
+        line-height: 1.8;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+      }
+
+      .design-rationale p:hover {
+        opacity: 1;
+        transform: translateX(5px);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #333, #2a2a2a);
+        color: white;
+        text-align: center;
+        padding: 30px;
+        margin-top: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      footer p {
+        font-size: 1.1rem;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .triptych-container {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .triptych-panel {
+          transform: none !important;
+          margin: 0;
+          width: 90%;
+          max-width: 400px;
+        }
+
+        .triptych-panel:nth-child(2) {
+          transform: none !important;
+        }
+
+        .design-rationale {
+          padding: 30px;
+          margin: 40px 0;
+        }
+
+        .design-rationale h2 {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav a {
+          margin: 0 15px;
+          font-size: 1rem;
+        }
+
+        .container {
+          padding: 20px 15px;
+        }
+
+        .design-rationale {
+          padding: 25px;
+        }
+
+        .design-rationale h2 {
+          font-size: 1.8rem;
+        }
+
+        .design-rationale p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="character.html">The Warrior</a>
+      <a href="timeline.html">India Timeline</a>
+    </nav>
+
+    <div class="container">
+      <section class="triptych-container">
+        <div class="triptych-panel">
+          <img
+            src="https://via.placeholder.com/300x315/8b0000/ffffff?text=Panel+1"
+            alt="Ancient Warrior - Past"
+            class="panel-image"
+          />
+          <div class="panel-content">
+            <div class="panel-title">Ancient Heritage</div>
+          </div>
+        </div>
+
+        <div class="triptych-panel">
+          <img
+            src="https://via.placeholder.com/300x315/a50000/ffffff?text=Panel+2"
+            alt="Modern Connection - Present"
+            class="panel-image"
+          />
+          <div class="panel-content">
+            <div class="panel-title">Modern Relevance</div>
+          </div>
+        </div>
+
+        <div class="triptych-panel">
+          <img
+            src="https://via.placeholder.com/300x315/8b0000/ffffff?text=Panel+3"
+            alt="Future Vision - Future"
+            class="panel-image"
+          />
+          <div class="panel-content">
+            <div class="panel-title">Future Vision</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="design-rationale">
+        <h2>Design Rationale</h2>
+        <p></p>
+        <p>
+          Detail the specific artistic elements borrowed from the chosen Asian
+          culture (color schemes, motifs, composition styles, etc.) and how
+          they've been adapted to communicate the modern message.
+        </p>
+        <p></p>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 Ancient Asian Warriors Project | Creative Media Design
+        Literacy 2
+      </p>
+    </footer>
+  </body>
+</html>
