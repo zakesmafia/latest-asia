@@ -4,84 +4,142 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hindu India Timeline | Ancient Asian Warriors Project</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
-      /* Consistent with other pages */
-      body {
-        font-family: "Noto Serif JP", serif;
-        background-color: #f5f1e6;
-        color: #333;
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap");
+
+      * {
         margin: 0;
         padding: 0;
-        padding-top: 60px; /* Add padding to account for fixed nav */
+        box-sizing: border-box;
       }
-      header {
-        background-image: url("india-banner.jpg");
-        background-size: cover;
-        height: 300px;
-        text-align: center;
-        color: white;
-        padding-top: 100px;
-        position: relative;
+
+      body {
+        font-family: "Noto Serif JP", serif;
+        background: linear-gradient(135deg, #e6ceb2 0%, #d4b896 100%);
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+        padding-top: 70px;
       }
+
       nav {
-        background-color: #8b0000;
-        padding: 15px;
+        background: linear-gradient(90deg, #8b0000, #a50000);
+        padding: 20px;
         text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         position: fixed;
-        top: 0; /* Make sure it's at the very top */
-        left: 0; /* Start from left edge */
-        width: 100%; /* Use full width instead of fixed pixels */
-        box-sizing: border-box; /* Include padding in width calculation */
-        z-index: 1000; /* Ensure nav stays above other content */
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
       }
+
       nav a {
         color: white;
         text-decoration: none;
-        margin: 20px;
-        font-weight: bold;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        margin-top: 50px;
+        margin: 0 25px;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 10px 0;
       }
 
-      /* Timeline specific styles */
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover {
+        transform: translateY(-2px);
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      /* Timeline Introduction */
       .timeline-intro {
         text-align: center;
-        margin: 40px 0;
-        padding: 20px;
-        background-color: rgba(139, 0, 0, 0.1);
-        border-radius: 8px;
+        margin: 40px 0 60px 0;
+        padding: 40px;
+        background: linear-gradient(135deg, #f0e8d8, #faf5ef);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
       }
 
+      .timeline-intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #8b0000, #a50000, #8b0000);
+      }
+
+      .timeline-intro h2 {
+        color: #8b0000;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .timeline-intro h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: #8b0000;
+        border-radius: 2px;
+      }
+
+      .timeline-intro p {
+        font-size: 1.1rem;
+        opacity: 0.8;
+        max-width: 600px;
+        margin: 20px auto 0;
+      }
+
+      /* Timeline Styles */
       .timeline {
         position: relative;
         max-width: 1200px;
-        margin: 40px auto;
+        margin: 60px auto;
+        padding: 20px 0;
       }
 
       .timeline::after {
         content: "";
         position: absolute;
         width: 6px;
-        background-color: #8b0000;
+        background: linear-gradient(to bottom, #8b0000, #a50000, #8b0000);
         top: 0;
         bottom: 0;
         left: 50%;
         margin-left: -3px;
         border-radius: 3px;
+        box-shadow: 0 0 10px rgba(139, 0, 0, 0.3);
       }
 
       .era {
@@ -89,10 +147,10 @@
         position: relative;
         background-color: inherit;
         width: 50%;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
       .era.visible {
@@ -103,14 +161,21 @@
       .era::after {
         content: "";
         position: absolute;
-        width: 25px;
-        height: 25px;
-        right: -17px;
-        background-color: white;
-        border: 4px solid #8b0000;
-        top: 15px;
+        width: 20px;
+        height: 20px;
+        right: -14px;
+        background: linear-gradient(45deg, #8b0000, #a50000);
+        border: 3px solid white;
+        top: 25px;
         border-radius: 50%;
         z-index: 1;
+        box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+        transition: all 0.3s ease;
+      }
+
+      .era:hover::after {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
       }
 
       .left {
@@ -125,36 +190,49 @@
         content: " ";
         height: 0;
         position: absolute;
-        top: 22px;
+        top: 32px;
         width: 0;
         z-index: 1;
         right: 30px;
-        border: medium solid #f5f1e6;
-        border-width: 10px 0 10px 10px;
-        border-color: transparent transparent transparent #f5f1e6;
+        border: medium solid transparent;
+        border-width: 10px 0 10px 15px;
+        border-left-color: white;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
       }
+
       .right::before {
         content: " ";
         height: 0;
         position: absolute;
-        top: 22px;
+        top: 32px;
         width: 0;
         z-index: 1;
         left: 30px;
-        border: medium solid #f5f1e6;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent #f5f1e6 transparent transparent;
+        border: medium solid transparent;
+        border-width: 10px 15px 10px 0;
+        border-right-color: white;
+        filter: drop-shadow(-2px 2px 4px rgba(0, 0, 0, 0.1));
       }
+
       .right::after {
-        left: -16px;
+        left: -14px;
       }
+
       .era-content {
-        padding: 20px 30px;
-        background-color: white;
+        padding: 30px;
+        background: linear-gradient(135deg, white, #fafafa);
         position: relative;
-        border-radius: 6px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         border-left: 4px solid #8b0000;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .era-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        border-left-width: 6px;
       }
 
       .right .era-content {
@@ -162,65 +240,123 @@
         border-right: 4px solid #8b0000;
       }
 
+      .right .era-content:hover {
+        border-right-width: 6px;
+      }
+
       .era h2 {
         color: #8b0000;
         margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        position: relative;
+        transition: all 0.3s ease;
       }
 
-      .era-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 4px;
-        margin: 10px 0;
+      .era-content:hover h2 {
+        color: #a50000;
+        transform: translateX(5px);
       }
 
-      .zoom-btn {
-        background-color: #8b0000;
+      .era p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #555;
+        margin: 0;
+        transition: all 0.3s ease;
+      }
+
+      .era-content:hover p {
+        color: #333;
+      }
+
+      .date-badge {
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        background: linear-gradient(45deg, #8b0000, #a50000);
         color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 10px;
-        transition: background-color 0.3s;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3);
       }
 
-      .zoom-btn:hover {
-        background-color: #6d0000;
+      .right .date-badge {
+        right: auto;
+        left: 20px;
       }
 
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 100;
-        left: 0;
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #333, #2a2a2a);
+        color: white;
+        text-align: center;
+        padding: 30px;
+        margin-top: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
         top: 0;
+        left: -100%;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shine 3s infinite;
       }
 
-      .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        max-height: 80vh;
-        margin-top: 5vh;
+      @keyframes shine {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
       }
 
-      .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: white;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
+      footer p {
+        font-size: 1.1rem;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 1024px) {
+        .timeline-intro h2 {
+          font-size: 2rem;
+        }
+
+        .era-content {
+          padding: 25px;
+        }
       }
 
       @media screen and (max-width: 768px) {
+        body {
+          padding-top: 80px;
+        }
+
+        nav a {
+          margin: 0 15px;
+          font-size: 1rem;
+        }
+
+        .container {
+          padding: 20px 15px;
+        }
+
         .timeline::after {
           left: 31px;
         }
@@ -233,14 +369,14 @@
 
         .era::before {
           left: 60px;
-          border: medium solid #f5f1e6;
-          border-width: 10px 10px 10px 0;
-          border-color: transparent #f5f1e6 transparent transparent;
+          border: medium solid transparent;
+          border-width: 10px 15px 10px 0;
+          border-right-color: white;
         }
 
         .left::after,
         .right::after {
-          left: 15px;
+          left: 21px;
         }
 
         .right {
@@ -251,31 +387,73 @@
           border-left: 4px solid #8b0000 !important;
           border-right: none !important;
         }
+
+        .era-content:hover {
+          border-left-width: 6px !important;
+          border-right-width: 0 !important;
+        }
+
+        .date-badge {
+          right: 20px !important;
+          left: auto !important;
+        }
+
+        .timeline-intro {
+          padding: 30px 20px;
+        }
+
+        .timeline-intro h2 {
+          font-size: 1.8rem;
+        }
+
+        .timeline-intro p {
+          font-size: 1rem;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .era-content {
+          padding: 20px;
+        }
+
+        .era h2 {
+          font-size: 1.2rem;
+        }
+
+        .era p {
+          font-size: 0.9rem;
+        }
       }
     </style>
   </head>
   <body>
     <nav>
       <a href="home.html">Home</a>
-      <a href="index.html">character</a>
+      <a href="index.html">Character</a>
       <a href="tryptych.html">Triptych Poster</a>
     </nav>
 
     <div class="container">
       <section class="timeline-intro">
         <h2>Journey Through Hindu India's History</h2>
+        <p>
+          Explore the rich tapestry of Hindu civilization from ancient times to
+          the present day, tracing the evolution of culture, spirituality, and
+          tradition across millennia.
+        </p>
       </section>
 
       <div class="timeline">
         <!-- Indus Valley Civilization -->
         <div class="era left">
           <div class="era-content">
-            <h2>Indus Valley Civilization (3300–1300 BCE)</h2>
-
+            <div class="date-badge">3300-1300 BCE</div>
+            <h2>Indus Valley Civilization</h2>
             <p>
               The Bronze Age civilization known for advanced urban planning,
               drainage systems, and early Hindu symbols like the Swastika and
-              Pashupati seal.
+              Pashupati seal. This sophisticated society laid the groundwork for
+              future Hindu traditions.
             </p>
           </div>
         </div>
@@ -283,94 +461,101 @@
         <!-- Vedic Period -->
         <div class="era right">
           <div class="era-content">
-            <h2>Vedic Period (1500–500 BCE)</h2>
-
+            <div class="date-badge">1500-500 BCE</div>
+            <h2>Vedic Period</h2>
             <p>
               Composition of the Vedas, the oldest scriptures of Hinduism.
-              Development of early Hindu rituals and the caste system.
+              Development of early Hindu rituals, philosophy, and the social
+              structure that would influence Indian society for millennia.
             </p>
           </div>
         </div>
 
         <div class="era left">
           <div class="era-content">
-            <h2>Maurya Empire (322–185 BCE)</h2>
-
+            <div class="date-badge">322-185 BCE</div>
+            <h2>Maurya Empire</h2>
             <p>
-              Under Ashoka, Buddhism flourished but Hindu traditions continued.
-              Development of stone architecture and edicts.
+              Under Ashoka, Buddhism flourished but Hindu traditions continued
+              to thrive. Development of stone architecture, edicts, and the
+              integration of diverse religious philosophies.
             </p>
           </div>
         </div>
 
         <div class="era right">
           <div class="era-content">
-            <h2>Gupta Empire (320–550 CE)</h2>
-
+            <div class="date-badge">320-550 CE</div>
+            <h2>Gupta Empire</h2>
             <p>
-              The "Golden Age" of Hindu culture with advancements in art,
-              science, and literature. Development of classical Hindu temple
-              architecture.
+              The "Golden Age" of Hindu culture with remarkable advancements in
+              art, science, mathematics, and literature. Development of
+              classical Hindu temple architecture and the flourishing of
+              Sanskrit literature.
             </p>
           </div>
         </div>
 
         <div class="era left">
           <div class="era-content">
-            <h2>Medieval Period (550–1200 CE)</h2>
-
+            <div class="date-badge">550-1200 CE</div>
+            <h2>Medieval Period</h2>
             <p>
               Construction of magnificent temples like Khajuraho and Konark.
-              Development of Bhakti movement emphasizing devotion to deities.
+              Development of the Bhakti movement emphasizing personal devotion
+              to deities and the democratization of spiritual practice.
             </p>
           </div>
         </div>
 
         <div class="era right">
           <div class="era-content">
-            <h2>Delhi Sultanate (1206–1526 CE)</h2>
-
+            <div class="date-badge">1206-1526 CE</div>
+            <h2>Delhi Sultanate</h2>
             <p>
-              Islamic rule brought new influences, but Hindu traditions
-              persisted. Syncretic styles emerged in art and architecture.
+              Islamic rule brought new cultural influences, but Hindu traditions
+              persisted and adapted. Syncretic styles emerged in art,
+              architecture, and music, creating a unique Indo-Islamic culture.
             </p>
           </div>
         </div>
 
         <div class="era left">
           <div class="era-content">
-            <h2>Mughal Empire (1526–1857 CE)</h2>
+            <div class="date-badge">1526-1857 CE</div>
+            <h2>Mughal Empire</h2>
             <p>
               Despite Islamic rule, Hindu art flourished in miniature paintings
-              and regional kingdoms maintained Hindu traditions.
+              and regional kingdoms maintained Hindu traditions. The period saw
+              remarkable cultural synthesis and architectural achievements.
             </p>
           </div>
         </div>
 
         <div class="era right">
           <div class="era-content">
-            <h2>Colonial Period (1757–1947 CE)</h2>
+            <div class="date-badge">1757-1947 CE</div>
+            <h2>Colonial Period</h2>
             <p>
-              British rule led to Hindu reform movements. Revival of classical
-              arts and emergence of modern Hindu nationalism.
+              British rule led to Hindu reform movements and cultural
+              renaissance. Revival of classical arts, emergence of modern Hindu
+              nationalism, and the rediscovery of ancient texts and traditions.
             </p>
           </div>
         </div>
 
         <div class="era left">
           <div class="era-content">
-            <h2>Independent India (1947–Present)</h2>
+            <div class="date-badge">1947-Present</div>
+            <h2>Independent India</h2>
             <p>
-              Hinduism adapts to modern world while maintaining traditions.
-              Global spread of Hindu philosophy and yoga.
+              Hinduism adapts to the modern world while maintaining ancient
+              traditions. Global spread of Hindu philosophy, yoga, and
+              meditation practices, making it a truly world religion.
             </p>
           </div>
         </div>
       </div>
-    </div>
-
-    <div id="imageModal" class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
     </div>
 
     <footer>
@@ -387,7 +572,8 @@
           rect.top >= 0 &&
           rect.left >= 0 &&
           rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) &&
+            (window.innerHeight || document.documentElement.clientHeight) +
+              100 &&
           rect.right <=
             (window.innerWidth || document.documentElement.clientWidth)
         );
@@ -395,24 +581,34 @@
 
       function handleScroll() {
         const eras = document.querySelectorAll(".era");
-        eras.forEach((era) => {
+        eras.forEach((era, index) => {
           if (isInViewport(era)) {
-            era.classList.add("visible");
+            setTimeout(() => {
+              era.classList.add("visible");
+            }, index * 100); // Stagger the animations
           }
         });
       }
 
-      window.onclick = function (event) {
-        const modal = document.getElementById("imageModal");
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
+      // Add smooth scrolling behavior
+      document.querySelectorAll(".era-content").forEach((content) => {
+        content.addEventListener("click", function () {
+          this.style.transform = "scale(0.98)";
+          setTimeout(() => {
+            this.style.transform = "";
+          }, 150);
+        });
+      });
 
       window.addEventListener("load", () => {
         handleScroll();
         window.addEventListener("scroll", handleScroll);
       });
+
+      // Trigger initial animation
+      setTimeout(() => {
+        handleScroll();
+      }, 500);
     </script>
   </body>
 </html>
