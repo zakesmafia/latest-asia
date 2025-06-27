@@ -3,10 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ancient Asian Warriors Project</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap");
+    <title>Ancient Asian Warriors Project - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
+    <style>
       * {
         margin: 0;
         padding: 0;
@@ -15,9 +20,8 @@
 
       body {
         font-family: "Noto Serif JP", serif;
-        background: linear-gradient(135deg, #e6ceb2 0%, #d4b896 100%);
+        background: linear-gradient(135deg, #e6ceb2, #d4b896);
         color: #333;
-        line-height: 1.6;
         overflow-x: hidden;
       }
 
@@ -25,20 +29,19 @@
         background: linear-gradient(90deg, #8b0000, #a50000);
         padding: 20px;
         text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        position: sticky;
+        position: fixed;
+        width: 100%;
         top: 0;
         z-index: 1000;
-        width: 100%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
 
       nav a {
         color: white;
         text-decoration: none;
         margin: 0 25px;
-        font-weight: 500;
         font-size: 1.1rem;
-        transition: all 0.3s ease;
+        font-weight: 500;
         position: relative;
         padding: 10px 0;
       }
@@ -51,742 +54,174 @@
         width: 0;
         height: 2px;
         background: white;
-        transition: all 0.3s ease;
+        transition: 0.3s;
         transform: translateX(-50%);
-      }
-
-      nav a:hover {
-        transform: translateY(-2px);
-        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
       }
 
       nav a:hover::after {
         width: 100%;
       }
 
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 20px;
-        padding-top: 40px;
-      }
-
-      /* Hero Section */
       .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        padding: 80px 0;
+        padding: 100px 20px 20px;
         position: relative;
-        background: linear-gradient(
-          135deg,
-          rgba(240, 232, 216, 0.8),
-          rgba(230, 206, 178, 0.8)
-        );
-        border-radius: 25px;
-        margin: 40px 20px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
       }
 
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background: linear-gradient(90deg, #8b0000, #a50000, #8b0000);
-      }
-
-      .hero h2 {
-        font-size: 3rem;
-        color: #8b0000;
-        font-weight: 700;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        animation: fadeInUp 1s ease-out;
-      }
-
-      .hero p {
-        font-size: 1.3rem;
-        color: #666;
-        max-width: 800px;
-        margin: 0 auto;
-        opacity: 0.9;
-        animation: fadeInUp 1s ease-out 0.3s both;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Character Gallery - Top Row (2 images) */
-      .character-gallery {
-        margin: 80px 0;
-        perspective: 1200px;
-        padding: 0 20px;
-      }
-
-      .top-row {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        gap: 60px;
-        margin-bottom: 60px;
-      }
-
-      .large-card {
-        position: relative;
-        width: 400px;
-        height: 550px;
-        border-radius: 20px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-        background: linear-gradient(135deg, #f0e8d8, #faf5ef);
-        border: 3px solid #8b0000;
-        transform-style: preserve-3d;
-      }
-
-      .large-card:nth-child(1) {
-        transform: rotateY(8deg) translateZ(10px);
-        animation: slideInLeft 0.8s ease-out;
-      }
-
-      .large-card:nth-child(2) {
-        transform: rotateY(-8deg) translateZ(10px);
-        animation: slideInRight 0.8s ease-out 0.2s both;
-      }
-
-      
-
-      /* Bottom Row (3 images) */
-      .bottom-row {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        gap: 40px;
-      }
-
-      .character-card {
-        position: relative;
-        width: 320px;
-        height: 450px;
-        border-radius: 20px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        background: linear-gradient(135deg, #f0e8d8, #faf5ef);
-        border: 3px solid #8b0000;
-        transform-style: preserve-3d;
-      }
-
-      .character-card:nth-child(1) {
-        transform: rotateY(5deg) translateZ(0);
-        animation: slideInLeft 0.8s ease-out 0.4s both;
-      }
-
-      .character-card:nth-child(2) {
-        transform: scale(1.05) translateZ(15px);
+      .hero-content {
+        max-width: 1000px;
         z-index: 2;
-        border-color: #a50000;
-        box-shadow: 0 20px 45px rgba(139, 0, 0, 0.3);
-        animation: slideInUp 0.8s ease-out 0.6s both;
       }
 
-      .character-card:nth-child(3) {
-        transform: rotateY(-5deg) translateZ(0);
-        animation: slideInRight 0.8s ease-out 0.8s both;
+      .hero h1 {
+        font-size: 4rem;
+        color: #8b0000;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
       }
 
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-100px) rotateY(5deg);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0) rotateY(5deg);
-        }
+      .hero-subtitle {
+        font-size: 1.6rem;
+        color: #5a2d2d;
+        margin-bottom: 30px;
       }
 
-      @keyframes slideInUp {
-        from {
-          opacity: 0;
-          transform: translateY(50px) scale(1.05);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1.05);
-        }
+      .hero-description {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 40px;
       }
 
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(100px) rotateY(-5deg);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0) rotateY(-5deg);
-        }
+      .hero-quote {
+        font-style: italic;
+        font-size: 1.3rem;
+        color: #8b0000;
+        margin-bottom: 30px;
       }
 
-      .character-card:hover {
-        transform: scale(1.1) translateY(-15px) rotateY(0deg);
-        z-index: 10;
-        box-shadow: 0 25px 60px rgba(139, 0, 0, 0.4);
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
       }
 
-      .character-card:nth-child(2):hover {
-        transform: scale(1.15) translateY(-20px) rotateY(0deg);
+      .cta-buttons a {
+        background-color: #8b0000;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s ease;
       }
 
-      .character-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.5s ease;
-        filter: sepia(15%) contrast(1.05);
-      }
-
-      .large-card .character-image {
-        height: 100%;
-      }
-
-      .character-card:hover .character-image,
-      .large-card:hover .character-image {
-        filter: sepia(0%) contrast(1.15) brightness(1.1);
+      .cta-buttons a:hover {
+        background-color: #a50000;
         transform: scale(1.05);
       }
 
-      .character-info {
+      .floating-symbol {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(139, 0, 0, 0.95));
-        color: white;
-        padding: 25px;
-        transform: translateY(50px);
-        transition: all 0.4s ease;
+        font-size: 2.5rem;
+        color: rgba(139, 0, 0, 0.08);
+        animation: float 18s ease-in-out infinite;
       }
 
-      .large-card .character-info {
-        padding: 30px;
+      .floating-symbol:nth-child(1) {
+        top: 15%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+      .floating-symbol:nth-child(2) {
+        bottom: 20%;
+        right: 10%;
+        animation-delay: 4s;
+      }
+      .floating-symbol:nth-child(3) {
+        top: 60%;
+        left: 20%;
+        animation-delay: 7s;
+      }
+      .floating-symbol:nth-child(4) {
+        top: 40%;
+        right: 25%;
+        animation-delay: 2s;
       }
 
-      .character-card:hover .character-info,
-      .large-card:hover .character-info {
-        transform: translateY(0);
-      }
-
-      .character-info h3 {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 8px;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-      }
-
-      .large-card .character-info h3 {
-        font-size: 1.6rem;
-        margin-bottom: 12px;
-      }
-
-      .character-info p {
-        font-size: 0.95rem;
-        opacity: 0.9;
-        line-height: 1.4;
-        margin: 0;
-      }
-
-      .large-card .character-info p {
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-
-      /* Section Headers */
-      .section-header {
-        text-align: center;
-        margin: 40px 0 20px;
-        padding: 20px;
-      }
-
-      .section-header h3 {
-        color: #8b0000;
-        font-size: 1.8rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-      }
-
-      .section-header p {
-        font-size: 1.1rem;
-        color: #666;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-
-      /* View Selector */
-      .view-description {
-        text-align: center;
-        margin: 60px 0;
-        padding: 40px;
-        background: linear-gradient(
-          135deg,
-          rgba(240, 232, 216, 0.6),
-          rgba(230, 206, 178, 0.6)
-        );
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-      }
-
-      .view-description h3 {
-        color: #8b0000;
-        font-size: 2rem;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-
-      .view-description p {
-        font-size: 1.1rem;
-        color: #666;
-        max-width: 700px;
-        margin: 0 auto;
-        line-height: 1.7;
-      }
-
-      /* Footer */
-      footer {
-        background: linear-gradient(135deg, #333, #2a2a2a);
-        color: white;
-        text-align: center;
-        padding: 40px;
-        margin-top: 80px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      footer::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.1),
-          transparent
-        );
-        animation: shine 4s infinite;
-      }
-
-      @keyframes shine {
-        0% {
-          left: -100%;
-        }
+      @keyframes float {
+        0%,
         100% {
-          left: 100%;
+          transform: translateY(0px);
+          opacity: 0.1;
         }
-      }
-
-      footer p {
-        font-size: 1.1rem;
-        font-weight: 300;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Lightbox Styles */
-      .lightbox {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 9999;
-        cursor: pointer;
-        animation: fadeIn 0.3s ease-out;
-      }
-
-      .lightbox.active {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
-
-      .lightbox-content {
-        position: relative;
-        animation: zoomIn 0.3s ease-out;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .lightbox-image {
-        max-width: 90vw;
-        max-height: 80vh;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        border-radius: 10px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        display: block;
-      }
-
-      .lightbox-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 40px;
-        height: 40px;
-        background: #8b0000;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        z-index: 10001;
-      }
-
-      .lightbox-close:hover {
-        background: #a50000;
-        transform: scale(1.1);
-      }
-
-      .lightbox-info {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        right: auto;
-        margin-top: 20px;
-        text-align: center;
-        color: white;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 15px 25px;
-        border-radius: 10px;
-        backdrop-filter: blur(10px);
-        max-width: 600px;
-      }
-
-      .lightbox-info h3 {
-        font-size: 1.5rem;
-        margin-bottom: 8px;
-        color: #fff;
-      }
-
-      .lightbox-info p {
-        font-size: 1rem;
-        opacity: 0.9;
-        margin: 0;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes zoomIn {
-        from {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      /* Click indicator */
-      .character-card::after,
-      .large-card::after {
-        content: "🔍";
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: rgba(139, 0, 0, 0.9);
-        color: white;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 0.3s ease;
-        pointer-events: none;
-      }
-
-      .character-card:hover::after,
-      .large-card:hover::after {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* Responsive Design */
-      @media (max-width: 1200px) {
-        .top-row,
-        .bottom-row {
-          flex-direction: column;
-          align-items: center;
-          gap: 40px;
-        }
-
-        .large-card,
-        .character-card {
-          transform: none !important;
-          width: 90%;
-          max-width: 400px;
-          margin: 0 auto;
-        }
-
-        .large-card {
-          max-width: 450px;
-        }
-
-        .hero h2 {
-          font-size: 2.5rem;
+        50% {
+          transform: translateY(-15px);
+          opacity: 0.3;
         }
       }
 
       @media (max-width: 768px) {
-        nav a {
-          margin: 0 15px;
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+        .hero-description {
           font-size: 1rem;
         }
-
-        .container {
-          padding: 15px;
-        }
-
-        .hero {
-          padding: 60px 20px;
-          margin: 20px 10px;
-        }
-
-        .hero h2 {
-          font-size: 2rem;
-        }
-
-        .hero p {
-          font-size: 1.1rem;
-        }
-
-        .large-card {
-          width: 95%;
-          height: 500px;
-        }
-
-        .character-card {
-          width: 95%;
-          height: 420px;
-        }
-
-        .view-description {
-          padding: 30px 20px;
-        }
-
-        .view-description h3 {
-          font-size: 1.6rem;
-        }
-
-        .section-header h3 {
-          font-size: 1.5rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero h2 {
-          font-size: 1.8rem;
-        }
-
-        .large-card {
-          height: 450px;
-        }
-
-        .character-card {
-          height: 380px;
-        }
-
-        nav a {
-          margin: 0 10px;
-          font-size: 0.9rem;
-        }
-
-        .top-row,
-        .bottom-row {
-          gap: 30px;
+        .cta-buttons a {
+          padding: 10px 20px;
+          font-size: 0.95rem;
         }
       }
     </style>
   </head>
+
   <body>
     <nav>
-      <a href="home.html">Home</a>
+      <a href="character.html">The Warrior</a>
       <a href="tryptych.html">Triptych Poster</a>
       <a href="timeline.html">India Timeline</a>
     </nav>
 
-    <div class="container">
-      <section class="hero">
-        <h2>Durga</h2>
-        
-      </section>
+    <section class="hero">
+      <div class="floating-symbol">⚔️</div>
+      <div class="floating-symbol">🧠</div>
+      <div class="floating-symbol">🎭</div>
+      <div class="floating-symbol">📿</div>
 
-      <section class="character-gallery">
-        <div class="section-header">
-          <h3>Character Design Studies</h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-
-        <div class="top-row">
-          <div
-            class="large-card"
-            onclick="openLightbox('WhatsApp Image 2025-06-25 at 17.08.10_1a0d94fa.jpg', 'Pure Form Study', 'Character design isolated to focus on form, silhouette, and artistic details without environmental distractions')"
-          >
-            <img
-              src="WhatsApp Image 2025-06-25 at 17.08.10_1a0d94fa.jpg"
-              alt="Warrior Without Background"
-              class="character-image"
-            />
-            
-          </div>
-
-          <div
-            class="large-card"
-            onclick="openLightbox('number 2.jpg', 'Divine Manifestation', 'Traditional depiction showcasing divine power and spiritual significance through multiple arms symbolism')"
-          >
-            <img
-              src="number 2.jpg"
-              alt="Multi-Armed Warrior"
-              class="character-image"
-            />
-            
-          </div>
-        </div>
-        <div class="bottom-row">
-          <div
-            class="character-card"
-            onclick="openLightbox('POSE1.png', 'Front View', 'Direct frontal perspective showcasing symmetry and commanding presence')"
-          >
-            <img
-              src="POSE1.png"
-              alt="Warrior Front View"
-              class="character-image"
-            />
-            
-          </div>
-
-          <div
-            class="character-card"
-            onclick="openLightbox('4.jpg', 'Three-Quarter View', 'Dynamic angle revealing depth, movement, and dimensional characteristics')"
-          >
-            <img
-              src="4.jpg"
-              alt=""
-              class="character-image"
-            />
-            
-          </div>
-
-          <div
-            class="character-card"
-            onclick="openLightbox('warrior hindu modIFIED2.png', 'Profile View', 'Side perspective emphasizing silhouette strength and traditional pose')"
-          >
-            <img
-              src="warrior hindu modIFIED2.png"
-              alt="Warrior Profile View"
-              class="character-image"
-            />
-           
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-      <div class="lightbox-content" onclick="event.stopPropagation()">
-        <button class="lightbox-close" onclick="closeLightbox()">
-          &times;
-        </button>
-        <img id="lightbox-image" class="lightbox-image" src="" alt="" />
-        <div class="lightbox-info">
-          <h3 id="lightbox-title"></h3>
-          <p id="lightbox-description"></p>
-        </div>
+      <div class="hero-content">
+        <h1>Ancient Asian Warriors</h1>
+        <p class="hero-subtitle">
+          Where Timeless Wisdom Meets South African Realities
+        </p>
+        <p class="hero-description">
+          Where Timeless Wisdom Meets South African Realities This project
+          blends the sacred strength of ancient Asian warrior traditions with
+          the emotional challenges faced by South African youth today. Each
+          panel of the triptych represents a stage in mental health—joy,
+          emotional suppression, and sadness—mirroring the often unseen
+          struggles within our communities. By using spiritual symbolism,
+          textured visuals, and cultural patterns rooted in Hindu aesthetics,
+          the artwork gives form to feelings that are usually buried or ignored.
+          It highlights how mental illness, especially in disadvantaged areas,
+          is a silent battle shaped by trauma, poverty, and lack of support.
+          Through art, design, and historical storytelling, this project
+          redefines what it means to be a warrior—one who finds courage not in
+          combat, but in healing, vulnerability, and emotional resilience. "The
+          greatest victory is the conquest of oneself"
+        </p>
+        <p class="hero-quote">
+          "The greatest victory is the conquest of oneself"
+        </p>
       </div>
-    </div>
-
-    <footer>
-      <p>
-        &copy; 2025 Ancient Asian Warriors Project | Creative Media Design
-        Literacy 2
-      </p>
-    </footer>
-
-    <script>
-      function openLightbox(imageSrc, title, description) {
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImage = document.getElementById("lightbox-image");
-        const lightboxTitle = document.getElementById("lightbox-title");
-        const lightboxDescription = document.getElementById(
-          "lightbox-description"
-        );
-
-        lightboxImage.src = imageSrc;
-        lightboxImage.alt = title;
-        lightboxTitle.textContent = title;
-        lightboxDescription.textContent = description;
-
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden"; // Prevent scrolling
-      }
-
-      function closeLightbox() {
-        const lightbox = document.getElementById("lightbox");
-        lightbox.classList.remove("active");
-        document.body.style.overflow = ""; // Restore scrolling
-      }
-
-      // Close lightbox with Escape key
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          closeLightbox();
-        }
-      });
-
-      // Prevent image dragging for better UX
-      document.addEventListener("DOMContentLoaded", function () {
-        const images = document.querySelectorAll("img");
-        images.forEach((img) => {
-          img.addEventListener("dragstart", (e) => e.preventDefault());
-        });
-      });
-    </script>
+    </section>
   </body>
 </html>
